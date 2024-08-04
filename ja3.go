@@ -3,10 +3,9 @@ package azuretls
 import (
 	"errors"
 	"fmt"
+	tls "github.com/Noooste/utls"
 	"strconv"
 	"strings"
-
-	tls "github.com/Noooste/utls"
 )
 
 // TlsSpecifications struct contains various fields representing TLS handshake settings.
