@@ -1,9 +1,8 @@
 package azuretls
 
 import (
-	"math"
-
 	"github.com/Noooste/fhttp/http2"
+	"math"
 )
 
 const (
@@ -46,10 +45,10 @@ func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http
 
 	default: //chrome
 		return map[http2.SettingID]uint32{
-				http2.SettingHeaderTableSize:   55536,
+				http2.SettingHeaderTableSize:   65536,
 				http2.SettingEnablePush:        0,
-				http2.SettingInitialWindowSize: 4291456,
-				http2.SettingMaxHeaderListSize: 272144,
+				http2.SettingInitialWindowSize: 6291456,
+				http2.SettingMaxHeaderListSize: 262144,
 			}, []http2.SettingID{
 				http2.SettingHeaderTableSize,
 				http2.SettingEnablePush,
@@ -66,7 +65,7 @@ func defaultWindowsUpdate(navigator string) uint32 {
 	case Ios:
 		return 15663105
 	default:
-		return 12517377
+		return 15663105
 	}
 }
 
@@ -130,10 +129,9 @@ func defaultHeaderPriorities(navigator string) *http2.PriorityParam {
 
 	default:
 		return &http2.PriorityParam{
-			Weight:    41,
-			StreamDep: 13,
-			Exclusive: false,
+			Weight:    255,
+			StreamDep: 0,
+			Exclusive: true,
 		}
-
 	}
 }
