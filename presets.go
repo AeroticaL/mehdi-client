@@ -18,7 +18,7 @@ const (
 
 func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http2.SettingID) {
 	switch navigator {
-	case Firefox:
+	case Chrome:
 		return map[http2.SettingID]uint32{
 				http2.SettingMaxFrameSize:      16384,
 				http2.SettingInitialWindowSize: 131072,
@@ -46,9 +46,9 @@ func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http
 
 	default: //chrome
 		return map[http2.SettingID]uint32{
-				http2.SettingHeaderTableSize:   65510,
+				http2.SettingHeaderTableSize:   65536,
 				http2.SettingEnablePush:        0,
-				http2.SettingInitialWindowSize: 629146,
+				http2.SettingInitialWindowSize: 6291456,
 				http2.SettingMaxHeaderListSize: 262144,
 			}, []http2.SettingID{
 				http2.SettingHeaderTableSize,
@@ -61,18 +61,18 @@ func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http
 
 func defaultWindowsUpdate(navigator string) uint32 {
 	switch navigator {
-	case Firefox:
+	case Chrome:
 		return 12517377
 	case Ios:
 		return 15663105
 	default:
-		return 15663110
+		return 15663105
 	}
 }
 
 func defaultStreamPriorities(navigator string) []http2.Priority {
 	switch navigator {
-	case Firefox:
+	case Chrome:
 		return []http2.Priority{
 			{
 				StreamID: 3,
@@ -121,7 +121,7 @@ func defaultStreamPriorities(navigator string) []http2.Priority {
 
 func defaultHeaderPriorities(navigator string) *http2.PriorityParam {
 	switch navigator {
-	case Firefox:
+	case Chrome:
 		return &http2.PriorityParam{
 			Weight:    41,
 			StreamDep: 13,
