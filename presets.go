@@ -16,64 +16,65 @@ const (
 	Android = "android" //deprecated
 )
 
-func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http2.SettingID) {
+// defaultHeaderSettings returns HTTP/2 settings for a given navigator with customizable values.
+func defaultHeaderSettings(navigator string, customSettings map[http2.SettingID]uint32) (map[http2.SettingID]uint32, []http2.SettingID) {
+	defaultSettings := map[http2.SettingID]uint32{
+		http2.SettingHeaderTableSize:   65536,
+		http2.SettingEnablePush:        0,
+		http2.SettingInitialWindowSize: 6291456,
+		http2.SettingMaxHeaderListSize: 262144,
+	}
+
 	switch navigator {
-	case Chrome:
-		return map[http2.SettingID]uint32{
-				http2.SettingMaxFrameSize:      16384,
-				http2.SettingInitialWindowSize: 131072,
-				http2.SettingHeaderTableSize:   65536,
-			}, []http2.SettingID{
-				http2.SettingMaxFrameSize,
-				http2.SettingInitialWindowSize,
-				http2.SettingHeaderTableSize,
-			}
+	case Firefox:
+		defaultSettings = map[http2.SettingID]uint32{
+			http2.SettingMaxFrameSize:      16384,
+			http2.SettingInitialWindowSize: 131072,
+			http2.SettingHeaderTableSize:   65536,
+		}
 
 	case Ios:
-		return map[http2.SettingID]uint32{
-				http2.SettingHeaderTableSize:      4096,
-				http2.SettingMaxConcurrentStreams: 100,
-				http2.SettingInitialWindowSize:    2097152,
-				http2.SettingMaxFrameSize:         16384,
-				http2.SettingMaxHeaderListSize:    math.MaxUint32,
-			}, []http2.SettingID{
-				http2.SettingHeaderTableSize,
-				http2.SettingMaxConcurrentStreams,
-				http2.SettingInitialWindowSize,
-				http2.SettingMaxFrameSize,
-				http2.SettingMaxHeaderListSize,
-			}
-
-	default: //chrome
-		return map[http2.SettingID]uint32{
-				http2.SettingHeaderTableSize:   65536,
-				http2.SettingEnablePush:        0,
-				http2.SettingInitialWindowSize: 6291456,
-				http2.SettingMaxHeaderListSize: 262144,
-			}, []http2.SettingID{
-				http2.SettingHeaderTableSize,
-				http2.SettingEnablePush,
-				http2.SettingInitialWindowSize,
-				http2.SettingMaxHeaderListSize,
-			}
+		defaultSettings = map[http2.SettingID]uint32{
+			http2.SettingHeaderTableSize:      4096,
+			http2.SettingMaxConcurrentStreams: 100,
+			http2.SettingInitialWindowSize:    2097152,
+			http2.SettingMaxFrameSize:         16384,
+			http2.SettingMaxHeaderListSize:    math.MaxUint32,
+		}
 	}
+
+	// Apply custom settings if provided
+	for k, v := range customSettings {
+		defaultSettings[k] = v
+	}
+
+	var ids []http2.SettingID
+	for id := range defaultSettings {
+		ids = append(ids, id)
+	}
+
+	return defaultSettings, ids
 }
 
-func defaultWindowsUpdate(navigator string) uint32 {
+// defaultWindowsUpdate returns the default window update value for a given navigator.
+func defaultWindowsUpdate(navigator string, customValue uint32) uint32 {
 	switch navigator {
-	case Chrome:
-		return 12517377
+	case Firefox:
+		return customValue
 	case Ios:
-		return 15663105
+		return customValue
 	default:
-		return 15663105
+		return customValue
 	}
 }
 
-func defaultStreamPriorities(navigator string) []http2.Priority {
+// defaultStreamPriorities returns the default stream priorities for a given navigator with customizable values.
+func defaultStreamPriorities(navigator string, customPriorities []http2.Priority) []http2.Priority {
+	defaultPriorities := []http2.Priority{}
+
 	switch navigator {
-	case Chrome:
-		return []http2.Priority{
+	case Firefox:
+		defaultPriorities = []http2.Priority{
 			{
 				StreamID: 3,
 				PriorityParam: http2.PriorityParam{
@@ -113,26 +114,35 @@ func defaultStreamPriorities(navigator string) []http2.Priority {
 				},
 			},
 		}
-
-	default:
-		return []http2.Priority{}
 	}
+
+	if len(customPriorities) > 0 {
+		return customPriorities
+	}
+
+	return defaultPriorities
 }
 
-func defaultHeaderPriorities(navigator string) *http2.PriorityParam {
+// defaultHeaderPriorities returns the default header priority parameters for a given navigator with customizable values.
+func defaultHeaderPriorities(navigator string, customPriority *http2.PriorityParam) *http2.PriorityParam {
+	defaultPriority := &http2.PriorityParam{
+		Weight:    255,
+		StreamDep: 0,
+		Exclusive: true,
+	}
+
 	switch navigator {
-	case Chrome:
-		return &http2.PriorityParam{
+	case Firefox:
+		defaultPriority = &http2.PriorityParam{
 			Weight:    41,
 			StreamDep: 13,
 			Exclusive: false,
 		}
-
-	default:
-		return &http2.PriorityParam{
-			Weight:    255,
-			StreamDep: 0,
-			Exclusive: true,
-		}
 	}
+
+	if customPriority != nil {
+		return customPriority
+	}
+
+	return defaultPriority
 }
