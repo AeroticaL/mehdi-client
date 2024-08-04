@@ -26,10 +26,11 @@ type TlsSpecifications struct {
 func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 	var signatureAlg []tls.SignatureScheme
 	var recordSizeLimit uint16
+
 	var supportedVersions []uint16
 
 	switch navigator {
-	case "Firefox":
+	case Firefox:
 		signatureAlg = []tls.SignatureScheme{
 			tls.ECDSAWithP256AndSHA256,
 			tls.ECDSAWithP384AndSHA384,
@@ -47,27 +48,9 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 			tls.VersionTLS13,
 			tls.VersionTLS12,
 		}
-		recordSizeLimit = 0x4001 // typical for Firefox
 
-	case "Chrome":
-		signatureAlg = []tls.SignatureScheme{
-			tls.ECDSAWithP256AndSHA256,
-			tls.PSSWithSHA256,
-			tls.PKCS1WithSHA256,
-			tls.ECDSAWithP384AndSHA384,
-			tls.PSSWithSHA384,
-			tls.PKCS1WithSHA384,
-			tls.PSSWithSHA512,
-			tls.PKCS1WithSHA512,
-		}
-		supportedVersions = []uint16{
-			tls.VersionTLS13,
-			tls.VersionTLS12,
-		}
-		recordSizeLimit = 0x4000 // Chrome may use different limit
-
+		recordSizeLimit = 0x4001
 	default:
-		// Default settings if navigator not recognized
 		signatureAlg = []tls.SignatureScheme{
 			tls.ECDSAWithP256AndSHA256,
 			tls.PSSWithSHA256,
@@ -77,21 +60,26 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 			tls.PKCS1WithSHA384,
 			tls.PSSWithSHA512,
 			tls.PKCS1WithSHA512,
+			tls.ECDSAWithSHA1,
 		}
+
 		supportedVersions = []uint16{
+			tls.GREASE_PLACEHOLDER,
 			tls.VersionTLS13,
 			tls.VersionTLS12,
 		}
-		recordSizeLimit = 0x4000 // reasonable default
 	}
 
 	return &TlsSpecifications{
-		AlpnProtocols:                           []string{"h2", "http/1.1"},
-		SignatureAlgorithms:                     signatureAlg,
-		SupportedVersions:                       supportedVersions,
-		CertCompressionAlgos:                    []tls.CertCompressionAlgo{tls.CertCompressionBrotli},
-		DelegatedCredentialsAlgorithmSignatures: []tls.SignatureScheme{
-			// Add if needed for specific browser
+		AlpnProtocols:        []string{"h2", "http/1.1"},
+		SignatureAlgorithms:  signatureAlg,
+		SupportedVersions:    supportedVersions,
+		CertCompressionAlgos: []tls.CertCompressionAlgo{tls.CertCompressionBrotli},
+		DelegatedCredentialsAlgorithmSignatures: []tls.SignatureScheme{ // only for firefox
+			tls.ECDSAWithP256AndSHA256,
+			tls.ECDSAWithP384AndSHA384,
+			tls.ECDSAWithP521AndSHA512,
+			tls.ECDSAWithSHA1,
 		},
 		PSKKeyExchangeModes: []uint8{
 			tls.PskModeDHE,
