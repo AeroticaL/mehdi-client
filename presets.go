@@ -48,7 +48,7 @@ func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http
 		return map[http2.SettingID]uint32{
 				http2.SettingHeaderTableSize:   65510,
 				http2.SettingEnablePush:        0,
-				http2.SettingInitialWindowSize: 6291416,
+				http2.SettingInitialWindowSize: 629146,
 				http2.SettingMaxHeaderListSize: 262144,
 			}, []http2.SettingID{
 				http2.SettingHeaderTableSize,
@@ -131,7 +131,7 @@ func defaultHeaderPriorities(navigator string) *http2.PriorityParam {
 	default:
 		return &http2.PriorityParam{
 			Weight:    255,
-			StreamDep: 1,
+			StreamDep: 0,
 			Exclusive: true,
 		}
 	}
