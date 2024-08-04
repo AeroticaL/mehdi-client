@@ -1,9 +1,9 @@
 # AzureTLS Client 
-[![GoDoc](https://godoc.org/github.com/Noooste/azuretls-client?status.svg)](https://godoc.org/github.com/Noooste/azuretls-client)
+[![GoDoc](https://godoc.org/github.com/aerotical/mehdi-client?status.svg)](https://godoc.org/github.com/aerotical/mehdi-client)
 ![Coverage](https://img.shields.io/badge/Coverage-79.9%25-brightgreen)
-[![build](https://github.com/Noooste/azuretls-client/actions/workflows/push.yml/badge.svg)](https://github.com/Noooste/azuretls-client/actions/workflows/push.yml)
+[![build](https://github.com/aerotical/mehdi-client/actions/workflows/push.yml/badge.svg)](https://github.com/aerotical/mehdi-client/actions/workflows/push.yml)
 [![Go Report Card](https://goreportcard.com/badge/Noooste/azuretls-client)](https://goreportcard.com/report/Noooste/azuretls-client)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Noooste/azuretls-client/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/aerotical/mehdi-client/blob/master/LICENSE)
 
 # 📖 Introduction 
 
@@ -76,14 +76,14 @@ golang ^1.20
 ## Installation
 
 ```bash
-$ go get github.com/Noooste/azuretls-client
+$ go get github.com/aerotical/mehdi-client
 ````
 
 ## Usage
 
 ```go
 import (
-    "github.com/Noooste/azuretls-client"
+    "github.com/aerotical/mehdi-client"
 )
 ```
 

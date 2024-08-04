@@ -3,7 +3,7 @@ package azuretls_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Noooste/azuretls-client"
+	"github.com/aerotical/mehdi-client"
 	"log"
 	"strings"
 	"sync"

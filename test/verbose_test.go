@@ -1,7 +1,7 @@
 package azuretls_test
 
 import (
-	"github.com/Noooste/azuretls-client"
+	"github.com/aerotical/mehdi-client"
 	"os"
 	"testing"
 	"time"

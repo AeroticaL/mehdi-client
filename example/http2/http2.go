@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Noooste/azuretls-client"
+	"github.com/aerotical/mehdi-client"
 )
 
 func main() {

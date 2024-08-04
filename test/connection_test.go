@@ -2,7 +2,7 @@ package azuretls_test
 
 import (
 	"fmt"
-	"github.com/Noooste/azuretls-client"
+	"github.com/aerotical/mehdi-client"
 	url2 "net/url"
 	"runtime"
 	"sync"

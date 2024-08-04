@@ -3,8 +3,8 @@ package azuretls_test
 import (
 	"bytes"
 	"fmt"
-	"github.com/Noooste/azuretls-client"
 	"github.com/Noooste/fhttp/http2"
+	"github.com/aerotical/mehdi-client"
 	"net/url"
 	"os"
 	"strings"

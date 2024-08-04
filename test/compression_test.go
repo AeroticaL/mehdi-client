@@ -1,7 +1,7 @@
 package azuretls
 
 import (
-	"github.com/Noooste/azuretls-client"
+	"github.com/aerotical/mehdi-client"
 	"strings"
 	"testing"
 )

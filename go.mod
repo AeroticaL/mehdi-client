@@ -1,4 +1,4 @@
-module github.com/Noooste/azuretls-client
+module github.com/aerotical/mehdi-client
 
 go 1.20
 

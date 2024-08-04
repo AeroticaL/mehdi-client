@@ -1,8 +1,8 @@
 package azuretls_test
 
 import (
-	"github.com/Noooste/azuretls-client"
 	http "github.com/Noooste/fhttp"
+	"github.com/aerotical/mehdi-client"
 	"net/url"
 	"strings"
 	"testing"

@@ -2,7 +2,7 @@ package azuretls_test
 
 import (
 	"encoding/json"
-	"github.com/Noooste/azuretls-client"
+	"github.com/aerotical/mehdi-client"
 	"testing"
 )
 
