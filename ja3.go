@@ -60,13 +60,13 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 			tls.PKCS1WithSHA384,
 			tls.PSSWithSHA512,
 			tls.PKCS1WithSHA512,
-			tls.ECDSAWithSHA1,
 		}
 
 		supportedVersions = []uint16{
 			tls.GREASE_PLACEHOLDER,
 			tls.VersionTLS13,
 			tls.VersionTLS12,
+			tls.VersionTLS11,
 		}
 	}
 
