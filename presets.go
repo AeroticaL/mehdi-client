@@ -130,7 +130,7 @@ func defaultHeaderPriorities(navigator string) *http2.PriorityParam {
 
 	default:
 		return &http2.PriorityParam{
-			Weight:    250,
+			Weight:    255,
 			StreamDep: 1,
 			Exclusive: true,
 		}
