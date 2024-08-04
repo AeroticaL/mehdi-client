@@ -1,8 +1,9 @@
 package azuretls
 
 import (
-	"github.com/Noooste/fhttp/http2"
 	"math"
+
+	"github.com/Noooste/fhttp/http2"
 )
 
 const (
@@ -32,7 +33,7 @@ func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http
 		return map[http2.SettingID]uint32{
 				http2.SettingHeaderTableSize:      4096,
 				http2.SettingMaxConcurrentStreams: 100,
-				http2.SettingInitialWindowSize:    2097152,
+				http2.SettingInitialWindowSize:    131072,
 				http2.SettingMaxFrameSize:         16384,
 				http2.SettingMaxHeaderListSize:    math.MaxUint32,
 			}, []http2.SettingID{
