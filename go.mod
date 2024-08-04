@@ -1,6 +1,8 @@
 module github.com/aerotical/mehdi-client
 
-go 1.20
+go 1.21
+
+toolchain go1.22.1
 
 require (
 	github.com/Noooste/fhttp v1.0.12
@@ -13,6 +15,7 @@ require (
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/cloudflare/circl v1.3.9 // indirect
+	github.com/etaaa/go-webhooks v1.0.0 // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
