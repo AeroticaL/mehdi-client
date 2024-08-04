@@ -46,10 +46,10 @@ func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http
 
 	default: //chrome
 		return map[http2.SettingID]uint32{
-				http2.SettingHeaderTableSize:      4096,
-				http2.SettingMaxConcurrentStreams: 100,
-				http2.SettingInitialWindowSize:    2097152,
-				http2.SettingMaxFrameSize:         16384,
+				http2.SettingHeaderTableSize:   65536,
+				http2.SettingEnablePush:        0,
+				http2.SettingInitialWindowSize: 6291456,
+				http2.SettingMaxHeaderListSize: 262144,
 			}, []http2.SettingID{
 				http2.SettingHeaderTableSize,
 				http2.SettingEnablePush,
