@@ -66,7 +66,7 @@ func defaultWindowsUpdate(navigator string) uint32 {
 	case Ios:
 		return 15663105
 	default:
-		return 15663105
+		return 15663110
 	}
 }
 
