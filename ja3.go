@@ -3,9 +3,10 @@ package azuretls
 import (
 	"errors"
 	"fmt"
-	tls "github.com/Noooste/utls"
 	"strconv"
 	"strings"
+
+	tls "github.com/Noooste/utls"
 )
 
 // TlsSpecifications struct contains various fields representing TLS handshake settings.
@@ -497,7 +498,7 @@ func getExtensions(extensions []string, specifications *TlsSpecifications, defau
 
 func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 	switch navigator {
-	case Firefox:
+	case Chrome:
 		return []tls.SignatureScheme{
 			tls.ECDSAWithP256AndSHA256,
 			tls.ECDSAWithP384AndSHA384,
