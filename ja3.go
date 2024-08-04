@@ -30,7 +30,7 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 	var supportedVersions []uint16
 
 	switch navigator {
-	case Firefox:
+	case Chrome:
 		signatureAlg = []tls.SignatureScheme{
 			tls.ECDSAWithP256AndSHA256,
 			tls.ECDSAWithP384AndSHA384,
