@@ -33,6 +33,7 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 	case Firefox:
 		signatureAlg = []tls.SignatureScheme{
 			tls.ECDSAWithP256AndSHA256,
+			tls.ECDSAWithP256AndSHA256,
 			tls.ECDSAWithP384AndSHA384,
 			tls.ECDSAWithP521AndSHA512,
 			tls.PSSWithSHA256,
@@ -450,7 +451,7 @@ func getExtensions(extensions []string, specifications *TlsSpecifications, defau
 			default: //firefox
 				builtExtensions = append(builtExtensions, &tls.KeyShareExtension{KeyShares: []tls.KeyShare{
 					{Group: tls.X25519},
-					{Group: tls.CurveP256},
+					{Group: tls.X25519},
 				}})
 			}
 			break
