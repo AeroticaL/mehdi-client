@@ -450,8 +450,8 @@ func getExtensions(extensions []string, specifications *TlsSpecifications, defau
 
 			default: //firefox
 				builtExtensions = append(builtExtensions, &tls.KeyShareExtension{KeyShares: []tls.KeyShare{
-					{Group: tls.X25519},
-					{Group: tls.X25519},
+
+					{Group: tls.CurveP256},
 				}})
 			}
 			break
