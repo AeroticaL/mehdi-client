@@ -505,6 +505,7 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 			tls.ECDSAWithP384AndSHA384,
 			tls.ECDSAWithP521AndSHA512,
 			tls.ECDSAWithSHA1,
+			tls.PSSWithSHA512,
 
 			tls.PSSWithSHA256,
 			tls.PSSWithSHA384,
