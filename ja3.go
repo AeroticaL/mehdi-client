@@ -38,11 +38,12 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 			tls.PSSWithSHA256,
 			tls.ECDSAWithSHA1,
 			tls.PSSWithSHA384,
-			tls.SignatureScheme(tls.CertCompressionZlib),
+			tls.Ed25519,
 
 			/*tls.PKCS1WithSHA256,
 			tls.PKCS1WithSHA384,
 			tls.PKCS1WithSHA512,
+
 			tls.ECDSAWithSHA1,
 			tls.PKCS1WithSHA1,
 			tls.PKCS1WithSHA256,
