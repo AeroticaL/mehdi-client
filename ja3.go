@@ -3,9 +3,10 @@ package azuretls
 import (
 	"errors"
 	"fmt"
-	tls "github.com/Noooste/utls"
 	"strconv"
 	"strings"
+
+	tls "github.com/Noooste/utls"
 )
 
 // TlsSpecifications struct contains various fields representing TLS handshake settings.
@@ -35,8 +36,7 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 			tls.ECDSAWithP384AndSHA384,
 			tls.ECDSAWithP521AndSHA512,
 			tls.PSSWithSHA256,
-			tls.PSSWithSHA384,
-			tls.PSSWithSHA512,
+
 			tls.PKCS1WithSHA256,
 			tls.PKCS1WithSHA384,
 			tls.PKCS1WithSHA512,
