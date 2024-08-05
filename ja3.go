@@ -501,9 +501,9 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 	switch navigator {
 	case Firefox:
 		return []tls.SignatureScheme{
-
+			tls.ECDSAWithP256AndSHA256,
 			tls.ECDSAWithP384AndSHA384,
-			tls.ECDSAWithP521AndSHA512,
+
 			tls.PSSWithSHA256,
 			tls.PSSWithSHA384,
 			tls.PSSWithSHA512,
