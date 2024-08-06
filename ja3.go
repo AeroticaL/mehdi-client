@@ -34,18 +34,14 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 		signatureAlg = []tls.SignatureScheme{
 			tls.ECDSAWithP256AndSHA256,
 			tls.ECDSAWithP384AndSHA384,
-			tls.ECDSAWithP521AndSHA512,
 			tls.PSSWithSHA256,
 
-			tls.PKCS1WithSHA256,
-			tls.PKCS1WithSHA384,
-			tls.PKCS1WithSHA512,
-			tls.ECDSAWithSHA1,
-			tls.PKCS1WithSHA1,
+			// Add or modify ciphers if needed
 		}
 		supportedVersions = []uint16{
 			tls.VersionTLS13,
 			tls.VersionTLS12,
+			tls.VersionTLS11, // Include older versions if needed
 		}
 
 		recordSizeLimit = 0x4001
