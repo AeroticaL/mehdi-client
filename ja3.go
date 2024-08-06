@@ -510,10 +510,6 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 			tls.PKCS1WithSHA512,
 			tls.ECDSAWithSHA1,
 			tls.PKCS1WithSHA1,
-			2052,
-			2053,
-			2054,
-			2057,
 		}
 	default: //chrome
 		return []tls.SignatureScheme{
