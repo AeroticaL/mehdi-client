@@ -503,6 +503,9 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 			2052,
 			2053,
 			2054,
+			1025,
+			1281,
+			1537,
 		}
 	default: //chrome
 		return []tls.SignatureScheme{
