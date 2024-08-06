@@ -32,9 +32,7 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 	switch navigator {
 	case Firefox:
 		signatureAlg = []tls.SignatureScheme{
-			tls.ECDSAWithP256AndSHA256,
-			tls.ECDSAWithP384AndSHA384,
-			tls.ECDSAWithP521AndSHA512,
+
 			tls.PSSWithSHA256,
 
 			tls.PKCS1WithSHA256,
