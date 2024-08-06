@@ -20,7 +20,7 @@ func defaultHeaderSettings(navigator string) (map[http2.SettingID]uint32, []http
 	switch navigator {
 	case Firefox:
 		return map[http2.SettingID]uint32{
-				http2.SettingMaxFrameSize:      1638,
+				http2.SettingMaxFrameSize:      29483,
 				http2.SettingInitialWindowSize: 131072,
 				http2.SettingHeaderTableSize:   65536,
 			}, []http2.SettingID{
