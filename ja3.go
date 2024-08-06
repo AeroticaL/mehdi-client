@@ -273,13 +273,6 @@ func getExtensions(extensions []string, specifications *TlsSpecifications, defau
 	)
 
 	switch navigator {
-	case Firefox:
-		builtExtensions = append(builtExtensions, &tls.RenegotiationInfoExtension{Renegotiation: specifications.RenegotiationSupport})
-		builtExtensions = append(builtExtensions, &tls.KeyShareExtension{KeyShares: []tls.KeyShare{
-			{Group: tls.X25519},
-			{Group: tls.CurveP256},
-			{Group: tls.CurveP384}, // Add more key share groups if needed
-		}})
 	case Chrome:
 		builtExtensions = make([]tls.TLSExtension, 1, len(extensions)+1)
 		builtExtensions[0] = &tls.UtlsGREASEExtension{}
