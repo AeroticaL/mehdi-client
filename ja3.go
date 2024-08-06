@@ -500,10 +500,8 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 	case Firefox:
 		return []tls.SignatureScheme{
 
-			2052,
-			2053,
-			2054,
-			1025,
+			tls.ECDSAWithSHA1,
+			tls.PKCS1WithSHA1,
 		}
 	default: //chrome
 		return []tls.SignatureScheme{
