@@ -499,9 +499,7 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 	switch navigator {
 	case Firefox:
 		return []tls.SignatureScheme{
-			1027,
-			1283,
-			1539,
+
 			2052,
 			2053,
 			2054,
