@@ -32,7 +32,14 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 	switch navigator {
 	case Firefox:
 		signatureAlg = []tls.SignatureScheme{
+			tls.ECDSAWithP256AndSHA256,
+			tls.ECDSAWithP384AndSHA384,
+			tls.ECDSAWithP521AndSHA512,
+			tls.PSSWithSHA256,
 
+			tls.PKCS1WithSHA256,
+			tls.PKCS1WithSHA384,
+			tls.PKCS1WithSHA512,
 			tls.ECDSAWithSHA1,
 			tls.PKCS1WithSHA1,
 		}
@@ -492,9 +499,21 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 	switch navigator {
 	case Firefox:
 		return []tls.SignatureScheme{
-
+			tls.ECDSAWithP256AndSHA256,
+			tls.ECDSAWithP384AndSHA384,
+			tls.ECDSAWithP521AndSHA512,
+			tls.PSSWithSHA256,
+			tls.PSSWithSHA384,
+			tls.PSSWithSHA512,
+			tls.PKCS1WithSHA256,
+			tls.PKCS1WithSHA384,
+			tls.PKCS1WithSHA512,
 			tls.ECDSAWithSHA1,
 			tls.PKCS1WithSHA1,
+			2052,
+			2053,
+			2054,
+			2057,
 		}
 	default: //chrome
 		return []tls.SignatureScheme{
