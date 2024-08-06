@@ -552,6 +552,7 @@ func getSupportedVersion(navigator string) ([]uint16, uint16, uint16) {
 			tls.GREASE_PLACEHOLDER,
 			tls.VersionTLS13,
 			tls.VersionTLS12,
+			tls.VersionTLS11,
 		}, tls.VersionTLS12, tls.VersionTLS13
 	default:
 		return []uint16{
