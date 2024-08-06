@@ -273,6 +273,13 @@ func getExtensions(extensions []string, specifications *TlsSpecifications, defau
 	)
 
 	switch navigator {
+	case Firefox:
+		builtExtensions = append(builtExtensions, &tls.RenegotiationInfoExtension{Renegotiation: specifications.RenegotiationSupport})
+		builtExtensions = append(builtExtensions, &tls.KeyShareExtension{KeyShares: []tls.KeyShare{
+			{Group: tls.X25519},
+			{Group: tls.CurveP256},
+			{Group: tls.CurveP384}, // Add more key share groups if needed
+		}})
 	case Chrome:
 		builtExtensions = make([]tls.TLSExtension, 1, len(extensions)+1)
 		builtExtensions[0] = &tls.UtlsGREASEExtension{}
@@ -505,11 +512,6 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 			tls.PSSWithSHA256,
 			tls.PSSWithSHA384,
 			tls.PSSWithSHA512,
-			tls.PKCS1WithSHA256,
-			tls.PKCS1WithSHA384,
-			tls.PKCS1WithSHA512,
-			tls.ECDSAWithSHA1,
-			tls.PKCS1WithSHA1,
 		}
 	default: //chrome
 		return []tls.SignatureScheme{
