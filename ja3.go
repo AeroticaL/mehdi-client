@@ -35,7 +35,10 @@ func DefaultTlsSpecifications(navigator string) *TlsSpecifications {
 			tls.ECDSAWithP256AndSHA256,
 			tls.ECDSAWithP384AndSHA384,
 			tls.ECDSAWithP521AndSHA512,
+			tls.PSSWithSHA256,
 
+			tls.PKCS1WithSHA256,
+			tls.PKCS1WithSHA384,
 			tls.PKCS1WithSHA512,
 			tls.ECDSAWithSHA1,
 			tls.PKCS1WithSHA1,
@@ -501,8 +504,6 @@ func getSupportedAlgorithms(navigator string) []tls.SignatureScheme {
 			2053,
 			2054,
 			1025,
-			1281,
-			1537,
 		}
 	default: //chrome
 		return []tls.SignatureScheme{
