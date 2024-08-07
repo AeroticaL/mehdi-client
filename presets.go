@@ -1,8 +1,9 @@
 package azuretls
 
 import (
-	"github.com/Noooste/fhttp/http2"
 	"math"
+
+	"github.com/Noooste/fhttp/http2"
 )
 
 const (
